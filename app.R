@@ -58,7 +58,7 @@ server <- shinyServer(function(input, output, session) {
 
     # Render Ship Card
     output$selected_ship_card <- renderUI(
-        card(
+        card(style="width:100%!important",
             div(class = "content",
                 div(class = "header", icon("ship"), selected_ship_info()$SHIPNAME[1]),
                 div(class = "meta", paste0("Type: ", selected_ship_info()$ship_type[1])),
