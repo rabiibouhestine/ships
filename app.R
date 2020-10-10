@@ -17,8 +17,8 @@ shipIcon <- iconList(
 
 
 # app semantic ui
-ui <- semanticPage(
-    title = "Ships",
+ui <- semanticPage(style="background-color:#F8F8F8",
+    title = "Vessel Dashboard",
     div(class = "ui container grid",
         div(class = "row",
             div(class = "sixteen wide column",
