@@ -20,23 +20,32 @@ shipIcon <- iconList(
 ui <- semanticPage(
     title = "Ships",
     div(class = "ui container grid",
-        div(class = "sixteen wide column",
-            div(class="ui horizontal divider", h1("Vessel Dashboard"))
-        ),
-        div(class = "five wide column",
-            segment(class = "raised segment",
-                    select_ship_ui("select_ship"),
-                    br(),
-                    uiOutput("selected_ship_card")
+        div(class = "row",
+            div(class = "sixteen wide column",
+                div(class="ui horizontal divider", h1("Vessel Dashboard"))
             )
         ),
-        div(class = "eleven wide column",
-            segment(class = "raised segment",
-                    p(strong("Longest sailed distance between two consecutive observations:")),
-                    textOutput(outputId = "selected_ship_name")
+        div(class = "row",
+            div(class = "five wide column",
+                segment(class = "raised segment",
+                        select_ship_ui("select_ship"),
+                        br(),
+                        uiOutput("selected_ship_card")
+                )
             ),
-            segment(class = "raised segment",
-                    leafletOutput("ship_path_map")
+            div(class = "eleven wide column",
+                segment(class = "raised segment",
+                        p(strong("Longest sailed distance between two consecutive observations:")),
+                        textOutput(outputId = "selected_ship_name")
+                ),
+                segment(class = "raised segment",
+                        leafletOutput("ship_path_map", height = 328)
+                )
+            )
+        ),
+        div(class = "row",
+            div(class = "sixteen wide column",
+                uiOutput("data_span_note")
             )
         )
     )
@@ -67,7 +76,7 @@ server <- shinyServer(function(input, output, session) {
         )
     )
 
-    # Render Note
+    # Render Vessel Longest Distance Note
     output$selected_ship_name <- renderText(
         paste0(selected_ship_info()$SHIPNAME[1],
                " sailed for a distance of ",
@@ -100,6 +109,20 @@ server <- shinyServer(function(input, output, session) {
             addControl(html = "Click on vessel for more information",
                        position = "bottomleft")
     })
+
+    # Render Data Span Note
+    output$data_span_note <- renderUI(
+        message_box(class = "icon",
+                    icon_name = "info circle",
+                    header = "Note:",
+                    content = paste0(
+                        "The observations in the data that has been used in the making of this dahboard span from ",
+                        min(ships$DATETIME),
+                        " to ",
+                        max(ships$DATETIME)
+                    )
+        )
+    )
 
 
 })
