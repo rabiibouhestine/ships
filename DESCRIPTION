@@ -1,18 +1,22 @@
 Package: ships
-Title: What the Package Does (One Line, Title Case)
+Title: Vessels Dashboard
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Rabii",
+           family = "Bouhestine",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+           email = "rabiibouhestine@outlook.com")
+Description: Shiny App that shows Vessels Dashboard
+License: CC0
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+imports:
+    shiny
+    shiny.semantic
+    tidyverse
+    leaflet
+    geodist
 Suggests: 
     testthat

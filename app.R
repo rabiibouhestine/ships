@@ -4,8 +4,8 @@ library(shiny.semantic)
 library(tidyverse)
 library(leaflet)
 library(geodist)
-# loading modules
-pkgload::load_all()
+# loading modules and functions
+dir("R", full.names = T) %>% walk(source)
 # reading data
 ships <- read_csv("data/ships.csv", n_max = 100000)
 # importing ship icons

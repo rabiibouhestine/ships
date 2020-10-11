@@ -3,10 +3,10 @@ select_ship_ui <- function(id) {
   ns <- NS(id)
 
   div(p(strong("Select vessel type:")),
-      dropdown_input(input_id = ns("select_ship_type"), choices = c()),
+      dropdown_input(input_id = ns("select_ship_type"), choices = NULL),
       br(),
       p(strong("Select vessel name:")),
-      dropdown_input(input_id = ns("select_ship_name"), choices = c())
+      dropdown_input(input_id = ns("select_ship_name"), choices = NULL)
   )
 }
 
@@ -16,6 +16,8 @@ select_ship <- function(input, output, session, data) {
   update_dropdown_input(session, "select_ship_type", choices = unique(data$ship_type))
 
   observe({
+    req(input$select_ship_type)
+
     selected_type_data <- data %>% filter(ship_type == input$select_ship_type)
 
     update_dropdown_input(session, "select_ship_name", choices = unique(selected_type_data$SHIPNAME))
@@ -23,6 +25,7 @@ select_ship <- function(input, output, session, data) {
 
   selected_ship_info <- reactive({
     req(input$select_ship_name)
+
     get_longest_dist_obs(data, input$select_ship_name)
   })
 

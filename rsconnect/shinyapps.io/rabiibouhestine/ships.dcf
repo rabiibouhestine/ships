@@ -1,0 +1,13 @@
+name: ships
+title: ships
+username:
+account: rabiibouhestine
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2989116
+bundleId: 3726742
+url: https://rabiibouhestine.shinyapps.io/ships/
+when: 1602437880.67596
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .Rbuildignore|.Rprofile|DESCRIPTION|NAMESPACE|man/get_longest_dist_obs.Rd|tests/testthat.R
