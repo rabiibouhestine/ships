@@ -7,7 +7,7 @@ library(geodist)
 # loading modules and functions
 dir("R", full.names = T) %>% walk(source)
 # reading data
-ships <- read_csv("data/ships.csv", n_max = 100000)
+ships <- read_csv("data/ships_sample.csv", n_max = 100000)
 # importing ship icons
 shipIcon <- iconList(
     start = makeIcon("ship_start_icon.png", iconWidth = 50, iconHeight = 25),

@@ -2,7 +2,7 @@ library(readr)
 
 test_that("get_longest_dist_obs works", {
 
-  sample <- read_csv("../../data/ships.csv", n_max = 100000)
+  sample <- read_csv("../../data/ships_sample.csv", n_max = 100000)
 
   result <- get_longest_dist_obs(data = sample, ship_name = "KAROLI")
 
